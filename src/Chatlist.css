@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+.container:hover {
+  background-color: #dfd9d9;
+}
+.info-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 10px 10px;
+}
+.info {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  padding-right: 50px;
+  margin-left: 50px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.info-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info-name {
+  font-size: 50px;
+  color: black;
+  text-transform: capitalize;
+}
+.info-time {
+  font-size: 30px;
+  color: #999;
+}
+.info-chat {
+  font-size: 20px;
+  color: #999;
+  display: flex;
+  width: 100%;
+}
+.info-chat > p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.nav {
+  text-decoration: none;
+}
