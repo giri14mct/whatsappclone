@@ -1,4 +1,4 @@
-import React, { useState, useContext,  useParams } from 'react'
+import React, { useState, useContext } from 'react'
 import './Chat.css';
 import { ChatContext } from './Routing'
 import { Link } from 'react-router-dom';
@@ -13,19 +13,23 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 const Chat = (props) => {
     const [store, setStore] = useState('');
-    const [chat, displayer] = useContext(ChatContext);
-
+    const [chat] = useContext(ChatContext);
+    const currInd = props.location.lister.index;
+    let chats
+    if (currInd === chat.contacts[currInd].id) {
+        [chats] = chat.contacts
+    }
 
 
     let sender = (e) => {
         e.preventDefault();
-        displayer(props.location.lister)
         setStore("")
     }
     function pushMessage() {
         props.location.lister.txt.push(store)
     }
     // console.log(props.location.lister)
+    console.log(chats)
     return (
         <>
             <div className="chat-head">
@@ -33,7 +37,7 @@ const Chat = (props) => {
                     <Link to="/"> <button type="button" className="back" > <KeyboardBackspaceIcon style={{ color: '#919191' }} /> </button></Link>
                     <img className="pic" src="https://www.w3schools.com/w3images/avatar2.png" alt="Profile of your fried" />
                     <div className="head-profile" >
-                        <div className="profile-name" ></div>  
+                        <div className="profile-name" >{props.location.lister.title}</div>
                         <div className="profile-time">last seen today at {new Date().toLocaleTimeString()}</div>
                     </div>
                     <div className="chat-icon" >
@@ -43,13 +47,23 @@ const Chat = (props) => {
                 </header>
                 <main className="message-area">
                     <div className="message " >
-                                        {display.map((msg) =>(
+                        {/* {chat.contacts.map((msg) =>(
                                                 
                                                 <div className="messageItem  messageItem-none">
                                                     <li className="message-text">{msg}</li>
                                                     <p className="message-time">{  new Date().toLocaleTimeString()}</p>
                                                 </div>
-                                        ))}
+                                        ))} */}
+                        {
+
+                            chats.chat.map((a, i) => (
+                                <div className="messageItem  messageItem-none">
+                                    <li key={i} className="message-text">{a}</li>
+                                    <p className="message-time">{new Date().toLocaleTimeString()}</p>
+                                </div>
+                            ))
+                        }
+
                     </div>
 
                 </main>
