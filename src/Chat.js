@@ -15,10 +15,8 @@ const Chat = (props) => {
     const [store, setStore] = useState('');
     const [chat] = useContext(ChatContext);
     const currInd = props.location.lister.index;
-    let chats
-    if (currInd === chat.contacts[currInd].id) {
-        [chats] = chat.contacts
-    }
+
+    let chats = chat.contacts[currInd]
 
 
     let sender = (e) => {
@@ -29,7 +27,7 @@ const Chat = (props) => {
         props.location.lister.txt.push(store)
     }
     // console.log(props.location.lister)
-    console.log(chats)
+    console.log(chat.contacts[currInd])
     return (
         <>
             <div className="chat-head">
@@ -47,13 +45,7 @@ const Chat = (props) => {
                 </header>
                 <main className="message-area">
                     <div className="message " >
-                        {/* {chat.contacts.map((msg) =>(
-                                                
-                                                <div className="messageItem  messageItem-none">
-                                                    <li className="message-text">{msg}</li>
-                                                    <p className="message-time">{  new Date().toLocaleTimeString()}</p>
-                                                </div>
-                                        ))} */}
+
                         {
 
                             chats.chat.map((a, i) => (
