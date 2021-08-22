@@ -40,21 +40,10 @@ export const Routing = () => {
             }
         ]});
         
-        let displayer = (data) => {
-            let index = chat.contacts.findIndex(e =>  e.name == data.title)
-            console.log(index)
-            let msgHolder = chat.contacts.map((a, i) => {
-                if(index == i ){
-                    return 
-                }
-            })
-             
-            console.log(data)
-        }
-    
+        
     return (
 
-        <ChatContext.Provider value={[chat, displayer]}>
+        <ChatContext.Provider value={[chat]}>
             <Router>
                 <div className="App">
                     <Route path="/" exact component={Home} />
