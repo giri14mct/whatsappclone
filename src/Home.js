@@ -1,4 +1,4 @@
-import React, {  useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import './Home.css';
 import ChatList from './ChatList';
 import { ChatContext } from './Routing'
@@ -9,7 +9,12 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
 
 function App() {
+   const [searchName, setSearchName] = useState('');
    const [chat] = useContext(ChatContext);
+
+   const searchTxt = e => {
+      setSearchName(e.target.value)
+   }
 
    return (
       <>
@@ -27,22 +32,34 @@ function App() {
                </div>
             </header>
             <div className="search">
-               <div className="search-icon">
+
+               <label className="search-icon" htmlFor="search-ic" >
                   <SearchIcon style={{ color: '#919191' }} />
-                  <input type="search" placeholder="Search or start new chat" />
-               </div>
+                  <input id="search-ic" type="search" value={searchName} onChange={searchTxt} placeholder="Search or start new chat" />
+               </label>
+
             </div>
 
             <div className="chat">
-               {chat.contacts.map((item) => (
-                  < ChatList key={item.id} idHolder={item.id}
-                  img={item.img} name={item.name} msg={item.chat} time={item.time} />
+
+               {chat.contacts.filter((val) => {
+                  if (searchName === '') {
+                     return val
+                  }
+                  else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
+                     return val
+                  }
+                  return val
+               }).map((val) => (
+                  < ChatList key={val.id} idHolder={val.id}
+                     img={val.img} name={val.name} msg={val.chat} time={val.time} />
                ))}
+
             </div>
 
          </div>
       </>
    );
 }
-// idHolder={item.id}
+
 export default App;
