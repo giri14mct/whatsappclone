@@ -55,3 +55,6 @@ header > img {
   border-color: transparent;
   margin-left: 20px;
 }
+.search-icon {
+cursor: pointer;
+}
