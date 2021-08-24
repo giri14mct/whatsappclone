@@ -51,7 +51,7 @@ function App() {
                   }
                   return val
                }).map((val) => (
-                  < ChatList key={val.id} idHolder={val.id}
+                  <ChatList key={val.id} idHolder={val.id}
                      img={val.img} name={val.name} msg={val.chat} time={val.time} />
                ))}
 
