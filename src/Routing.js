@@ -8,39 +8,54 @@ export const ChatContext = createContext();
 
 
 export const Routing = () => {
-    const [chat, setChat] = useState({
- contacts : [
-            { 
+    const [chat] = useState({
+        contacts: [
+            {
+                id: 0,
+                name: "jawa",
+                img: "https://www.w3schools.com/w3images/avatar2.png",
+                chat: [],
+                time: []
+            },
+            {
                 id: 1,
-                 name: "jawa",
-                 img: "https://www.w3schools.com/w3images/avatar2.png",
-                 chat: [],
-                 time: []
+                name: "gowtham",
+                img: "https://www.w3schools.com/w3images/avatar2.png",
+                chat: [],
+                time: []
             },
             {
                 id: 2,
-                    name: "giri",
-                    img: "https://www.w3schools.com/w3images/avatar2.png",
-                    chat: [],
-                    time: []
-            },
-            { 
-                id: 3,
                 name: "appa",
                 img: "https://www.w3schools.com/w3images/avatar2.png",
                 chat: [],
                 time: []
             },
             {
+                id: 3,
+                name: "bro",
+                img: "https://www.w3schools.com/w3images/avatar2.png",
+                chat: [],
+                time: []
+            },
+            {
                 id: 4,
-                    name: "bro",
-                    img: "https://www.w3schools.com/w3images/avatar2.png",
-                    chat: [],
-                    time: []
+                name: "agan",
+                img: "https://www.w3schools.com/w3images/avatar2.png",
+                chat: [],
+                time: []
+            },
+            {
+                id: 5,
+                name: "revanth",
+                img: "https://www.w3schools.com/w3images/avatar2.png",
+                chat: [],
+                time: []
             }
-        ]});
-        
-        
+        ]
+    });
+
+
     return (
 
         <ChatContext.Provider value={[chat]}>
