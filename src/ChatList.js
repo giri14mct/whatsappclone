@@ -34,11 +34,5 @@ const ChatList = (props) => {
     </>
   )
 }
-  //lister : {
-  //     index: idHolder,
-  //     title: name,
-  //     avatar: img,
-  //     txt: msg,
-  //     chatTime: time
-  // }
+  
 export default ChatList;
