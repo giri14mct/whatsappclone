@@ -12,22 +12,22 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 
 const Chat = (props) => {
-    const [store, setStore] = useState('');
     const [chat] = useContext(ChatContext);
+    const [store, setStore] = useState('');
+
     const currInd = props.location.lister.index;
-
     let chats = chat.contacts[currInd]
-
 
     let sender = (e) => {
         e.preventDefault();
         setStore("")
     }
     function pushMessage() {
-        props.location.lister.txt.push(store)
+        if (store) {
+            props.location.lister.txt.push(store)
+
+        }
     }
-    // console.log(props.location.lister)
-    console.log(chat.contacts[currInd])
     return (
         <>
             <div className="chat-head">
@@ -45,28 +45,25 @@ const Chat = (props) => {
                 </header>
                 <main className="message-area">
                     <div className="message " >
+                        {chats.chat.map((a, i) => (
+                            <div className="messageItem  messageItem-none">
+                                <li key={i} className="message-text">{a}</li>
+                                <p className="message-time">{new Date().toLocaleTimeString()}</p>
+                            </div>
 
-                        {
-
-                            chats.chat.map((a, i) => (
-                                <div className="messageItem  messageItem-none">
-                                    <li key={i} className="message-text">{a}</li>
-                                    <p className="message-time">{new Date().toLocaleTimeString()}</p>
-                                </div>
-                            ))
-                        }
-
+                        ))}
                     </div>
-
                 </main>
                 <form onSubmit={sender} className="input-area">
 
                     <label className="input-Attachment" htmlFor='fileInput'>
-                        <input type="file" multiple id="fileInput" style={{ visibility: "hidden" }} />
+
+                        <input type="file" autoComplete="off" multiple id="fileInput" style={{ visibility: "hidden" }} />
                         <AttachmentIcon style={{ color: '#919191' }} />
+
                     </label>
 
-                    <input name="chat" onChange={(e) => setStore(e.target.value)} value={store} className="input-text" type="text" placeholder="Type a message" />
+                    <input type="text" onChange={(e) => setStore(e.target.value)} autoComplete="off" name="chat" value={store} className="input-text" placeholder="Type a message" />
 
                     <button type="submit" onClick={pushMessage} className="input-send" ><SendIcon style={{ color: '#919191' }} /></button>
 
