@@ -35,7 +35,7 @@ function App() {
 
                <label className="search-icon" htmlFor="search-ic" >
                   <SearchIcon style={{ color: '#919191' }} />
-                  <input id="search-ic" type="search" value={searchName} onChange={searchTxt} placeholder="Search or start new chat" />
+                  <input id="search-ic" type="search" autoComplete="off" value={searchName} onChange={searchTxt} placeholder="Search or start new chat" />
                </label>
 
             </div>
