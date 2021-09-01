@@ -35,7 +35,7 @@ function App() {
 
                <label className="search-icon" htmlFor="search-ic" >
                   <SearchIcon style={{ color: '#919191' }} />
-                  <input id="search-ic" type="search" autoComplete="off" value={searchName} onChange={searchTxt} placeholder="Search or start new chat" />
+                  <input id="search-ic" autoComplete="off" type="search" value={searchName} onChange={searchTxt} placeholder="Search or start new chat" />
                </label>
 
             </div>
@@ -51,7 +51,7 @@ function App() {
                   }
                   return val
                }).map((val) => (
-                  <ChatList key={val.id} idHolder={val.id}
+                  < ChatList key={val.id} idHolder={val.id}
                      img={val.img} name={val.name} msg={val.chat} time={val.time} />
                ))}
 
